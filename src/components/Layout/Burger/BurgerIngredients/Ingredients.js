@@ -1,10 +1,10 @@
-import React, {Component} from "react";
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import CSS from "./Ingredients.css";
 
 class Ingredients extends Component {
-  render () {
+  render() {
     let ingredient = null;
 
     switch (this.props.type) {
@@ -34,13 +34,13 @@ class Ingredients extends Component {
       default:
         ingredient = null;
     }
-  
+
     return ingredient;
   }
 }
 
 Ingredients.propTypes = {
-  type: PropTypes.string.isRequired
-}
+  type: PropTypes.string.isRequired,
+};
 
 export default Ingredients;
