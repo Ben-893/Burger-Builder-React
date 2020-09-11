@@ -17,5 +17,6 @@ yarn install
 - JavaScript 
 - HTML
 - CSS
+- Google Firebase (backend)
 
 #### More improvments to follow... 🍔
