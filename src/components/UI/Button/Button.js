@@ -4,6 +4,7 @@ import CSS from "./Button.css";
 
 const button = (props) => (
   <button
+    disabled={props.disabled}
     className={[CSS.Button, CSS[props.btnType]].join(" ")}
     onClick={props.clicked}
   >
