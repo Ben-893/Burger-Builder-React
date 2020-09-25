@@ -9,7 +9,7 @@ yarn install
 
 ### To Use
 ```
-- yarn start
+- npm start
 ```
 
 ### Technologies used
