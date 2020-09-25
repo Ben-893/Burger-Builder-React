@@ -14,6 +14,7 @@ yarn install
 
 ### Technologies used
 - React
+- Redux
 - JavaScript 
 - HTML
 - CSS
