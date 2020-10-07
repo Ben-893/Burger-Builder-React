@@ -21,9 +21,9 @@ class BurgerBuilder extends Component {
     this.props.onInitIngredients();
   }
 
-  updatePurchaseState = (ingredients) => {
+  updatePurchaseState = ingredients => {
     const sum = Object.keys(ingredients)
-      .map((ingredientKey) => {
+      .map(ingredientKey => {
         return ingredients[ingredientKey];
       })
       .reduce((sum, el) => {
@@ -97,7 +97,7 @@ class BurgerBuilder extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     ings: state.ingredients,
     price: state.totalPrice,
@@ -105,11 +105,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdded: (ingName) =>
+    onIngredientAdded: ingName =>
       dispatch(burgerBuilderActions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) =>
+    onIngredientRemoved: ingName =>
       dispatch(burgerBuilderActions.removeIngredient(ingName)),
     onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
   };
