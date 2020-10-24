@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import CSS from './Auth.css';
 import Input from '../../components/UI/Input/Input';
@@ -44,6 +45,9 @@ class Auth extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
+    if (!rules) {
+      return true;
+    }
 
     if (rules.required) {
       isValid = value.trim() !== '' && isValid;
@@ -55,6 +59,16 @@ class Auth extends Component {
 
     if (rules.maxLength) {
       isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid;
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid;
     }
 
     return isValid;
@@ -125,8 +139,14 @@ class Auth extends Component {
       errorMessage = <p>{this.props.error.message}</p>;
     }
 
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to='/' />;
+    }
+
     return (
       <div className={CSS.Auth}>
+        {authRedirect}
         {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
@@ -144,6 +164,7 @@ const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
   };
 };
 
