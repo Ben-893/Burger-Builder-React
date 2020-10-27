@@ -3,7 +3,7 @@ import React from 'react';
 import CSS from './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-const navigationItems = props => (
+const NavigationItems = props => (
   <ul className={CSS.NavigationItems}>
     <NavigationItem link='/' exact>
       Burger Builder
@@ -17,4 +17,4 @@ const navigationItems = props => (
   </ul>
 );
 
-export default navigationItems;
+export default NavigationItems;
