@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../utility';
+import { updateObject } from '../../shared/utility';
 
 const initialState = {
   ingredients: null,
@@ -52,7 +52,7 @@ const setIngredient = (state, action) => {
     },
     totalPrice: 4,
     error: false,
-    building: false
+    building: false,
   });
 };
 
