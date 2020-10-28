@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import CSS from "./Modal.css";
-import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
-import Backdrop from "../Backdrop/Backdrop";
+import CSS from './Modal.css';
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
+import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -12,10 +12,6 @@ class Modal extends Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log("[Modal] DidUpdate");
-  }
-
   render() {
     return (
       <Auxiliary>
@@ -23,10 +19,9 @@ class Modal extends Component {
         <div
           className={CSS.Modal}
           style={{
-            transform: this.props.show ? "translateY(0)" : "translateY(-100vh)",
-            opacity: this.props.show ? "1" : "0",
-          }}
-        >
+            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+            opacity: this.props.show ? '1' : '0',
+          }}>
           {this.props.children}
         </div>
       </Auxiliary>

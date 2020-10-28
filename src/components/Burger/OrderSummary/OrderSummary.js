@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
-import Button from "../../UI/Button/Button";
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
+import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-  componentDidUpdate() {
-    console.log("[OrderSummary] DidUpdate");
-  }
-
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map(
-      (ingredientKey) => {
+      ingredientKey => {
         return (
           <li key={ingredientKey}>
-            <span style={{ textTransform: "capitalize" }}>{ingredientKey}</span>
+            <span style={{ textTransform: 'capitalize' }}>{ingredientKey}</span>
             : {this.props.ingredients[ingredientKey]}
           </li>
         );
@@ -28,10 +24,10 @@ class OrderSummary extends Component {
           <strong>Total Price: {this.props.price.toFixed(2)}</strong>
         </p>
         <p>Continue to Checkout?</p>
-        <Button btnType="Danger" clicked={this.props.purchaseCancelled}>
+        <Button btnType='Danger' clicked={this.props.purchaseCancelled}>
           CANCEL
         </Button>
-        <Button btnType="Success" clicked={this.props.purchaseContinued}>
+        <Button btnType='Success' clicked={this.props.purchaseContinued}>
           CONTINUE
         </Button>
       </Auxiliary>
