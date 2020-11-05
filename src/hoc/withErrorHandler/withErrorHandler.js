@@ -1,49 +1,45 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 import Modal from "../../components/UI/Modal/Modal";
 import Auxiliary from "../Auxiliary/Auxiliary";
 
 const withErrorHandler = (WrappedComponent, axios) => {
-  return class extends Component {
-    state = {
-      error: null,
-    };
+  return props => {
+    const [error, setError] = useState(null);
 
-    componentWillMount() {
-      this.requestInterceptor = axios.interceptors.request.use((request) => {
-        this.setState({ error: null });
+      const requestInterceptor = axios.interceptors.request.use((request) => {
+        setError(null);
         return request;
       });
-      this.responseInterceptor = axios.interceptors.response.use(
+      const responseInterceptor = axios.interceptors.response.use(
         (response) => response,
-        (error) => {
-          this.setState({ error: error });
+        (err) => {
+          setError(err);
         }
       );
-    }
 
-    componentWillUnmount() {
-      axios.interceptors.request.eject(this.requestInterceptor);
-      axios.interceptors.response.eject(this.responseInterceptor);
-    }
+    useEffect(() => {
+      return () => {
+        axios.interceptors.request.eject(requestInterceptor);
+        axios.interceptors.response.eject(responseInterceptor);
+      };
+    }, [requestInterceptor, responseInterceptor]);
 
-    errorConfirmedHandler = () => {
-      this.setState({ error: null });
+    const errorConfirmedHandler = () => {
+      setError(null);
     };
 
-    render() {
       return (
         <Auxiliary>
           <Modal
-            show={this.state.error}
-            modalClosed={this.errorConfirmedHandler}
+            show={error}
+            modalClosed={errorConfirmedHandler}
           >
-            {this.state.error ? this.state.error.message : null}
+            {error ? error.message : null}
           </Modal>
-          <WrappedComponent {...this.props} />
+          <WrappedComponent {...props} />
         </Auxiliary>
       );
-    }
   };
 };
 
