@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import CSS from "./Order.css";
+import CSS from './Order.css';
 
-const order = (props) => {
+const Order = props => {
   const ingredients = [];
 
   for (let ingredientName in props.ingredients) {
@@ -12,18 +12,17 @@ const order = (props) => {
     });
   }
 
-  const ingredientOutput = ingredients.map((ingredient) => {
+  const ingredientOutput = ingredients.map(ingredient => {
     return (
       <span
         style={{
-          textTransform: "capitalize",
-          display: "inline-block",
-          margin: "0 8px",
-          border: "1px solid #ccc",
-          padding: "5px",
+          textTransform: 'capitalize',
+          display: 'inline-block',
+          margin: '0 8px',
+          border: '1px solid #ccc',
+          padding: '5px',
         }}
-        key={ingredient.name}
-      >
+        key={ingredient.name}>
         {ingredient.name} ({ingredient.amount})
       </span>
     );
@@ -39,4 +38,4 @@ const order = (props) => {
   );
 };
 
-export default order;
+export default Order;

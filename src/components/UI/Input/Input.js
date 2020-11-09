@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import CSS from "./Input.css";
+import CSS from './Input.css';
 
-const input = (props) => {
+const Input = props => {
   let inputElement = null;
   const inputCSS = [CSS.InputElement];
 
@@ -11,34 +11,33 @@ const input = (props) => {
   }
 
   switch (props.elementType) {
-    case "input":
+    case 'input':
       inputElement = (
         <input
-          className={inputCSS.join(" ")}
+          className={inputCSS.join(' ')}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
         />
       );
       break;
-    case "textarea":
+    case 'textarea':
       inputElement = (
         <textarea
-          className={inputCSS.join(" ")}
+          className={inputCSS.join(' ')}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
         />
       );
       break;
-    case "select":
+    case 'select':
       inputElement = (
         <select
-          className={inputCSS.join(" ")}
+          className={inputCSS.join(' ')}
           value={props.value}
-          onChange={props.changed}
-        >
-          {props.elementConfig.options.map((option) => (
+          onChange={props.changed}>
+          {props.elementConfig.options.map(option => (
             <option key={option.value} value={option.value}>
               {option.displayValue}
             </option>
@@ -49,7 +48,7 @@ const input = (props) => {
     default:
       inputElement = (
         <input
-          className={inputCSS.join(" ")}
+          className={inputCSS.join(' ')}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
@@ -65,4 +64,4 @@ const input = (props) => {
   );
 };
 
-export default input;
+export default Input;

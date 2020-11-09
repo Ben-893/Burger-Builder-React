@@ -6,32 +6,32 @@ import CSS from './Layout.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
-const layout = props => {
+const Layout = props => {
   const [SideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
 
-const sideDrawerClosedHandler = () => {
+  const sideDrawerClosedHandler = () => {
     setSideDrawerIsVisible(false);
   };
 
-const sideDrawerToggleHandler = () => {
+  const sideDrawerToggleHandler = () => {
     setSideDrawerIsVisible(!SideDrawerIsVisible);
   };
 
-    return (
-      <Auxiliary>
-        <Toolbar
-          drawerToggleClicked={sideDrawerToggleHandler}
-          isAuth={props.isAuthenticated}
-        />
-        <SideDrawer
-          isAuth={props.isAuthenticated}
-          open={SideDrawerIsVisible}
-          closed={sideDrawerClosedHandler}
-        />
-        <main className={CSS.Content}>{props.children}</main>
-      </Auxiliary>
-    );
-}
+  return (
+    <Auxiliary>
+      <Toolbar
+        drawerToggleClicked={sideDrawerToggleHandler}
+        isAuth={props.isAuthenticated}
+      />
+      <SideDrawer
+        isAuth={props.isAuthenticated}
+        open={SideDrawerIsVisible}
+        closed={sideDrawerClosedHandler}
+      />
+      <main className={CSS.Content}>{props.children}</main>
+    </Auxiliary>
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -39,4 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(layout);
+export default connect(mapStateToProps)(Layout);

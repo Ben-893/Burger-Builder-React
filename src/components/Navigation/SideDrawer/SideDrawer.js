@@ -6,7 +6,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 
-const sideDrawer = props => {
+const SideDrawer = props => {
   let attachedCSS = [CSS.SideDrawer, CSS.Close];
   if (props.open) {
     attachedCSS = [CSS.SideDrawer, CSS.Open];
@@ -26,4 +26,4 @@ const sideDrawer = props => {
   );
 };
 
-export default sideDrawer;
+export default SideDrawer;
