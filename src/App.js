@@ -19,10 +19,12 @@ const Auth = React.lazy(() => {
   return import('./containers/Auth/Auth');
 });
 
-const app = props => {
+const App = props => {
+  const { onTryAutoSignup } = props;
+
   useEffect(() => {
-    props.onTryAutoSignup();
-  }, []);
+    onTryAutoSignup();
+  }, [onTryAutoSignup]);
 
   let routes = (
     <Switch>
@@ -66,4 +68,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(app));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
